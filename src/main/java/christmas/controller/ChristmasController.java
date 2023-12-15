@@ -1,10 +1,10 @@
 package christmas.controller;
 
 import christmas.domain.Day;
+import christmas.domain.Order;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 public class ChristmasController {
@@ -15,7 +15,7 @@ public class ChristmasController {
     public void start() {
         outputView.printStartService();
         Day date = readDate();
-        List<String> order = readOrder();
+        Order order = readOrder();
     }
 
     private Day readDate() {
@@ -25,7 +25,7 @@ public class ChristmasController {
         });
     }
 
-    private List<String> readOrder() {
+    private Order readOrder() {
         return attemptedRead(() -> {
             outputView.printOrderMessage();
             return inputView.readMenu();

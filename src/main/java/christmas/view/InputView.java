@@ -2,10 +2,10 @@ package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.domain.Day;
+import christmas.domain.Order;
 import christmas.validator.InputValidator;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class InputView {
 
@@ -19,9 +19,9 @@ public class InputView {
         return new Day(Integer.parseInt(input));
     }
 
-    public List<String> readMenu() {
+    public Order readMenu() {
         String input = Console.readLine();
         validator.validateDelimiter(input);
-        return Arrays.stream(input.split(SPLIT_REGEX)).toList();
+        return new Order(Arrays.stream(input.split(SPLIT_REGEX)).toList());
     }
 }
