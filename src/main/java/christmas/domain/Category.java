@@ -5,5 +5,9 @@ public enum Category {
     APPETIZER,
     MAIN_MENU,
     DESSERT,
-    DRINKS
+    DRINKS;
+
+    public boolean isDrinks() {
+        return this == DRINKS;
+    }
 }

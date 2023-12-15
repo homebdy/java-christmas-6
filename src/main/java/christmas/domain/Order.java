@@ -16,7 +16,7 @@ public class Order {
 
     public Order(List<String> input) {
         this.elements = new EnumMap<>(Menu.class);
-        validateDuplicate(input);
+        validate(input);
         addAllOrder(input);
     }
 
@@ -25,6 +25,11 @@ public class Order {
                     List<String> order = Arrays.stream(value.split(SPLIT_REGEX)).toList();
                     elements.put(Menu.getMenu(order.get(MENU_SEQUENCE)), Integer.valueOf(order.get(NUMBER_SEQUENCE)));
                 });
+    }
+
+    private void validate(List<String> input) {
+        validateDuplicate(input);
+        validateContainMenu(input);
     }
 
     private void validateDuplicate(List<String> input) {
@@ -36,6 +41,24 @@ public class Order {
             }
             menus.add(menuName);
         }
+    }
+
+    private void validateContainMenu(List<String> input) {
+        if (hasOnlyDrink(input)) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_MENU.getMessage());
+        }
+    }
+
+    private boolean hasOnlyDrink(List<String> input) {
+        int otherMenu = 0;
+        for (String menu : input) {
+            String menuName = Arrays.stream(menu.split(SPLIT_REGEX)).toList().get(MENU_SEQUENCE);
+            if (Menu.getMenu(menuName).isDrink()) {
+                continue;
+            }
+            otherMenu += 1;
+        }
+        return otherMenu == 0;
     }
 
     public int getTotalPrice() {

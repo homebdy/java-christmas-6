@@ -48,6 +48,10 @@ public enum Menu {
         return this.category == Category.MAIN_MENU;
     }
 
+    public boolean isDrink() {
+        return this.category.isDrinks();
+    }
+
     public int getPrice() {
         return price;
     }
