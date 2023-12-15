@@ -1,16 +1,11 @@
-package christmas.service;
+package christmas.domain;
 
-import christmas.domain.Badge;
-import christmas.domain.Day;
-import christmas.domain.Events;
-import christmas.domain.Order;
-
-public class EventService {
+public class EventPlanner {
 
     private final Order order;
     private final Events events;
 
-    public EventService(Day day, Order order) {
+    public EventPlanner(Day day, Order order) {
         this.order = order;
         this.events = new Events(order, day);
         getDiscount();

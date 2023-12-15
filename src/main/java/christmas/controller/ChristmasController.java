@@ -2,7 +2,7 @@ package christmas.controller;
 
 import christmas.domain.Day;
 import christmas.domain.Order;
-import christmas.service.EventService;
+import christmas.domain.EventPlanner;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -12,11 +12,11 @@ public class ChristmasController {
 
     private final OutputView outputView = new OutputView();
     private final InputView inputView = new InputView();
-    private EventService service;
+    private EventPlanner service;
 
     public void start() {
         outputView.printStartService();
-        service = new EventService(readDate(), readOrder());
+        service = new EventPlanner(readDate(), readOrder());
         printPreview();
     }
 
