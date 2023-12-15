@@ -21,6 +21,7 @@ public class InputView {
 
     public List<String> readMenu() {
         String input = Console.readLine();
+        validator.validateDelimiter(input);
         return Arrays.stream(input.split(SPLIT_REGEX)).toList();
     }
 }
