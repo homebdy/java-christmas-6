@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.constant.OutputMessage;
+
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
@@ -23,5 +25,16 @@ public class Order {
                     List<String> order = Arrays.stream(value.split(SPLIT_REGEX)).toList();
                     elements.put(Menu.getMenu(order.get(MENU_SEQUENCE)), Integer.valueOf(order.get(NUMBER_SEQUENCE)));
                 });
+    }
+
+    public String getOrderList() {
+        StringBuilder stringBuilder = new StringBuilder();
+        elements.keySet()
+                .forEach(key -> stringBuilder.append(key.getName())
+                        .append(OutputMessage.BLANK.getMessage())
+                        .append(elements.get(key))
+                        .append(OutputMessage.NUMBER.getMessage())
+                        .append(OutputMessage.NEW_LINE.getMessage()));
+        return stringBuilder.toString();
     }
 }

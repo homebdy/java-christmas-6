@@ -35,4 +35,8 @@ public enum Menu {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.INVALID_MENU.getMessage()));
     }
+
+    public String getName() {
+        return name;
+    }
 }
