@@ -1,11 +1,9 @@
 package christmas.domain;
 
+import christmas.constant.ExceptionMessage;
 import christmas.constant.OutputMessage;
 
-import java.util.Arrays;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Order {
 
@@ -18,6 +16,7 @@ public class Order {
 
     public Order(List<String> input) {
         this.elements = new EnumMap<>(Menu.class);
+        validateDuplicate(input);
         addAllOrder(input);
     }
 
@@ -26,6 +25,17 @@ public class Order {
                     List<String> order = Arrays.stream(value.split(SPLIT_REGEX)).toList();
                     elements.put(Menu.getMenu(order.get(MENU_SEQUENCE)), Integer.valueOf(order.get(NUMBER_SEQUENCE)));
                 });
+    }
+
+    private void validateDuplicate(List<String> input) {
+        List<String> menus = new ArrayList<>();
+        for (String menu : input) {
+            String menuName = Arrays.stream(menu.split(SPLIT_REGEX)).toList().get(MENU_SEQUENCE);
+            if (menus.contains(menuName)) {
+                throw new IllegalArgumentException(ExceptionMessage.INVALID_MENU.getMessage());
+            }
+            menus.add(menuName);
+        }
     }
 
     public int getTotalPrice() {
