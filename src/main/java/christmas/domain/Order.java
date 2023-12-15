@@ -24,9 +24,9 @@ public class Order {
 
     private void addAllOrder(List<String> input) {
         input.forEach(value -> {
-                    List<String> order = Arrays.stream(value.split(SPLIT_REGEX)).toList();
-                    elements.put(Menu.getMenu(order.get(MENU_SEQUENCE)), Integer.valueOf(order.get(NUMBER_SEQUENCE)));
-                });
+            List<String> order = Arrays.stream(value.split(SPLIT_REGEX)).toList();
+            elements.put(Menu.getMenu(order.get(MENU_SEQUENCE)), Integer.valueOf(order.get(NUMBER_SEQUENCE)));
+        });
     }
 
     private void validate(List<String> input) {

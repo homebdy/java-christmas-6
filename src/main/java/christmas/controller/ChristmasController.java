@@ -73,6 +73,7 @@ public class ChristmasController {
         outputView.printPriceAfterDiscount(service.getEvents());
         outputView.printNewLine();
     }
+
     private <T> T attemptedRead(Supplier<T> supplier) {
         try {
             return supplier.get();

@@ -8,13 +8,13 @@ public enum Menu {
 
     SOUP(Category.APPETIZER, "양송이수프", 6000),
     TAPAS(Category.APPETIZER, "타파스", 5500),
-    SALAD(Category.APPETIZER, "시저샐러드",8000),
+    SALAD(Category.APPETIZER, "시저샐러드", 8000),
     STEAK(Category.MAIN_MENU, "티본스테이크", 55000),
     LIP(Category.MAIN_MENU, "바비큐립", 54000),
     SEAFOOD_PASTA(Category.MAIN_MENU, "해산물파스타", 35000),
     CHRISTMAS_PASTA(Category.MAIN_MENU, "크리스마스파스타", 25000),
     CHOCOLATE_CAKE(Category.DESSERT, "초코케이크", 15000),
-    ICE_CREAM(Category.DESSERT,"아이스크림", 5000),
+    ICE_CREAM(Category.DESSERT, "아이스크림", 5000),
     ZERO_COLA(Category.DRINKS, "제로콜라", 3000),
     WINE(Category.DRINKS, "레드와인", 60000),
     CHAMPAGNE(Category.DRINKS, "샴페인", 25000);
