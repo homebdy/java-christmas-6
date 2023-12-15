@@ -11,6 +11,7 @@ public class Order {
     private static final int MENU_SEQUENCE = 0;
     private static final int NUMBER_SEQUENCE = 1;
     private static final int STANDARD = 120000;
+    private static final int DISCOUNT_START_PRICE = 10000;
 
     private final Map<Menu, Integer> elements;
 
@@ -112,6 +113,10 @@ public class Order {
                         .append(OutputMessage.NUMBER.getMessage())
                         .append(OutputMessage.NEW_LINE.getMessage()));
         return stringBuilder.toString();
+    }
+
+    public boolean isOverDiscountStandard() {
+        return getTotalPrice() > DISCOUNT_START_PRICE;
     }
 
     public String getPriceBeforeDiscount() {

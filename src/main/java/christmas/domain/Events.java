@@ -12,25 +12,31 @@ public class Events {
     private static final int WEEKDAY_DISCOUNT = 2023;
     private final Map<DiscountContent, Integer> elements;
     private final Order order;
+    private final Day day;
 
     public Events(Order order, Day day) {
         this.elements = new EnumMap<>(DiscountContent.class);
         this.order = order;
-        getDdayDiscount(day);
-        getWeekdayDiscount(day);
-        getWeekendDiscount(day);
-        getSpecialDiscount(day);
+        this.day = day;
+
+    }
+
+    public void startDiscount() {
+        getDdayDiscount();
+        getWeekdayDiscount();
+        getWeekendDiscount();
+        getSpecialDiscount();
         getGift();
     }
 
-    private void getDdayDiscount(Day day) {
+    private void getDdayDiscount() {
         if (day.isBeforeDday()) {
             int discountPrice = DEFAULT_D_DAY_PRICE + 100 * (day.getDay() - 1);
             elements.put(DiscountContent.D_DAY, discountPrice);
         }
     }
 
-    private void getWeekdayDiscount(Day day) {
+    private void getWeekdayDiscount() {
         if (Week.isWeekday(day.getDay())) {
             addWeekdayDiscount();
         }
@@ -42,7 +48,7 @@ public class Events {
         }
     }
 
-    private void getWeekendDiscount(Day day) {
+    private void getWeekendDiscount() {
         if (Week.isWeekend(day.getDay())) {
             addWeekendDiscount();
         }
@@ -54,7 +60,7 @@ public class Events {
         }
     }
 
-    private void getSpecialDiscount(Day day) {
+    private void getSpecialDiscount() {
         if (Special.isSpecialDay(day.getDay())) {
             elements.put(DiscountContent.SPECIAL, DEFAULT_D_DAY_PRICE);
         }
@@ -108,7 +114,7 @@ public class Events {
             getDiscount(sb);
             return sb.toString();
         }
-        sb.append(OutputMessage.NONE_DISCOUNT.getMessage());
+        sb.append(OutputMessage.NONE_DISCOUNT.getMessage()).append(OutputMessage.NEW_LINE.getMessage());
         return sb.toString();
     }
 

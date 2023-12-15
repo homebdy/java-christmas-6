@@ -13,6 +13,13 @@ public class EventService {
     public EventService(Day day, Order order) {
         this.order = order;
         this.events = new Events(order, day);
+        getDiscount();
+    }
+
+    public void getDiscount() {
+        if (order.isOverDiscountStandard()) {
+            events.startDiscount();
+        }
     }
 
     public Order getOrder() {
