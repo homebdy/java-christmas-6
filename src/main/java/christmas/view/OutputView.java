@@ -26,6 +26,11 @@ public class OutputView {
         System.out.println(order.getOrderList());
     }
 
+    public void printTotalBeforeDiscount(Order order) {
+        System.out.println(OutputMessage.BEFORE_DISCOUNT.getMessage());
+        System.out.println(order.getPriceBeforeDiscount());
+    }
+
     public void printExceptionMessage(String message) {
         System.out.println(message);
     }

@@ -9,7 +9,9 @@ public enum OutputMessage {
     NUMBER("개"),
     BLANK(" "),
     NEW_LINE("\n"),
-    PREVIEW("12월 26일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+    PREVIEW("12월 26일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!"),
+    PRICE("%,d원"),
+    BEFORE_DISCOUNT("<할인 전 총주문 금액>");
 
     private final String message;
 

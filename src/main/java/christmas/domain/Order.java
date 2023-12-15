@@ -27,6 +27,14 @@ public class Order {
                 });
     }
 
+    private int getTotalPrice() {
+        int price = 0;
+        for (Menu key : elements.keySet()) {
+            price += elements.get(key) * key.getPrice();
+        }
+        return price;
+    }
+
     public String getOrderList() {
         StringBuilder stringBuilder = new StringBuilder();
         elements.keySet()
@@ -35,6 +43,12 @@ public class Order {
                         .append(elements.get(key))
                         .append(OutputMessage.NUMBER.getMessage())
                         .append(OutputMessage.NEW_LINE.getMessage()));
+        return stringBuilder.toString();
+    }
+
+    public String getPriceBeforeDiscount() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(String.format(OutputMessage.PRICE.getMessage(), getTotalPrice()));
         return stringBuilder.toString();
     }
 }
