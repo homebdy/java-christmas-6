@@ -21,7 +21,7 @@ public class Day {
         }
     }
 
-    public int countDay() {
+    public int getDay() {
         return value;
     }
 

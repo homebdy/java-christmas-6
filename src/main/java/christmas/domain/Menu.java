@@ -40,6 +40,10 @@ public enum Menu {
         return name;
     }
 
+    public boolean isDessert() {
+        return this.category == Category.DESSERT;
+    }
+
     public int getPrice() {
         return price;
     }
