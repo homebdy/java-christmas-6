@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.constant.OutputMessage;
+
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -59,5 +61,15 @@ public class Events {
         if (order.isGift()) {
             elements.put(DiscountContent.GIFT, Menu.CHAMPAGNE.getPrice());
         }
+    }
+
+    public String getGiftMenu() {
+        StringBuilder sb = new StringBuilder();
+        if (elements.containsKey(DiscountContent.GIFT)) {
+            sb.append(String.format(OutputMessage.GIFT_CONTENT.getMessage(), Menu.CHAMPAGNE.getName()));
+            return sb.toString();
+        }
+        sb.append(OutputMessage.NONE_DISCOUNT.getMessage());
+        return sb.toString();
     }
 }

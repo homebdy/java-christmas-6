@@ -11,7 +11,10 @@ public enum OutputMessage {
     NEW_LINE("\n"),
     PREVIEW("12월 26일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!"),
     PRICE("%,d원"),
-    BEFORE_DISCOUNT("<할인 전 총주문 금액>");
+    BEFORE_DISCOUNT("<할인 전 총주문 금액>"),
+    GIFT_CONTENT("%s 1개"),
+    NONE_DISCOUNT("없음"),
+    GIFT_MESSAGE("<증정 메뉴>");
 
     private final String message;
 
