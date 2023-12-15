@@ -72,4 +72,25 @@ public class Events {
         sb.append(OutputMessage.NONE_DISCOUNT.getMessage());
         return sb.toString();
     }
+
+    public String getDiscountHistory() {
+        StringBuilder sb = new StringBuilder();
+        if (hasDiscount()) {
+            getDiscount(sb);
+            return sb.toString();
+        }
+        sb.append(OutputMessage.NONE_DISCOUNT.getMessage());
+        return sb.toString();
+    }
+
+    private boolean hasDiscount() {
+        return !elements.isEmpty();
+    }
+
+    private void getDiscount(StringBuilder sb) {
+        for (DiscountContent content : elements.keySet()) {
+            sb.append(String.format(content.getMessage(), elements.get(content)))
+                    .append(OutputMessage.NEW_LINE.getMessage());
+        }
+    }
 }

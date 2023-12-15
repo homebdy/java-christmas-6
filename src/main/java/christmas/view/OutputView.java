@@ -36,6 +36,13 @@ public class OutputView {
         System.out.println(OutputMessage.GIFT_MESSAGE.getMessage());
         System.out.println(events.getGiftMenu());
     }
+
+    public void printDiscount(Events events) {
+        System.out.println(OutputMessage.DISCOUNT_MESSAGE.getMessage());
+        System.out.println(events.getDiscountHistory());
+    }
+
+
     public void printExceptionMessage(String message) {
         System.out.println(message);
     }

@@ -14,7 +14,8 @@ public enum OutputMessage {
     BEFORE_DISCOUNT("<할인 전 총주문 금액>"),
     GIFT_CONTENT("%s 1개"),
     NONE_DISCOUNT("없음"),
-    GIFT_MESSAGE("<증정 메뉴>");
+    GIFT_MESSAGE("<증정 메뉴>"),
+    DISCOUNT_MESSAGE("<혜택 내역>");
 
     private final String message;
 
