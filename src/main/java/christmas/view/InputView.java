@@ -9,6 +9,7 @@ public class InputView {
 
     public String readDate() {
         String input = Console.readLine();
+        validator.validateNumber(input);
         return input;
     }
 }
