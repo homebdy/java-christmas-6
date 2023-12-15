@@ -12,6 +12,7 @@ public class Order {
     private static final int NUMBER_SEQUENCE = 1;
     private static final int STANDARD = 120000;
     private static final int DISCOUNT_START_PRICE = 10000;
+    private static final int START_RANGE = 1;
 
     private final Map<Menu, Integer> elements;
 
@@ -31,6 +32,7 @@ public class Order {
     private void validate(List<String> input) {
         validateDuplicate(input);
         validateContainMenu(input);
+        validateNumberRange(input);
     }
 
     private void validateDuplicate(List<String> input) {
@@ -60,6 +62,15 @@ public class Order {
             otherMenu += 1;
         }
         return otherMenu == 0;
+    }
+
+    private void validateNumberRange(List<String> input) {
+        for (String menu : input) {
+            String number = Arrays.stream(menu.split(SPLIT_REGEX)).toList().get(NUMBER_SEQUENCE);
+            if (Integer.parseInt(number) < START_RANGE) {
+                throw new IllegalArgumentException(ExceptionMessage.INVALID_MENU.getMessage());
+            }
+        }
     }
 
     public int getTotalPrice() {
