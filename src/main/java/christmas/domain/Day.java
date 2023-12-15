@@ -6,6 +6,7 @@ public class Day {
 
     private static final int START_RANGE = 1;
     private static final int END_RANGE = 31;
+    private static final int D_DAY = 25;
 
     private final int value;
 
@@ -18,5 +19,13 @@ public class Day {
         if (!(START_RANGE <= value && value <= END_RANGE)) {
             throw new IllegalArgumentException(ExceptionMessage.NOT_INTEGER.getMessage());
         }
+    }
+
+    public int countDay() {
+        return value;
+    }
+
+    public boolean isBeforeDday() {
+        return this.value <= D_DAY;
     }
 }
