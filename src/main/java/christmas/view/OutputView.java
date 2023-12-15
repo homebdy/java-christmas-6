@@ -17,6 +17,10 @@ public class OutputView {
         System.out.println(OutputMessage.READ_ORDER.getMessage());
     }
 
+    public void printPreview() {
+        System.out.println(OutputMessage.PREVIEW.getMessage());
+    }
+
     public void printOrderList(Order order) {
         System.out.println(OutputMessage.ORDER_MENU.getMessage());
         System.out.println(order.getOrderList());
