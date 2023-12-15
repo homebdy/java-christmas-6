@@ -12,6 +12,7 @@ public class Order {
     private static final String SPLIT_REGEX = "-";
     private static final int MENU_SEQUENCE = 0;
     private static final int NUMBER_SEQUENCE = 1;
+    private static final int STANDARD = 120000;
 
     private final Map<Menu, Integer> elements;
 
@@ -63,6 +64,10 @@ public class Order {
     public boolean hasMainMenu() {
         return elements.keySet().stream()
                 .anyMatch(Menu::isMainMenu);
+    }
+
+    public boolean isGift() {
+        return getTotalPrice() >= STANDARD;
     }
 
     public String getOrderList() {

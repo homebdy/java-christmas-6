@@ -1,8 +1,5 @@
 package christmas.domain;
 
-
-import org.mockito.internal.matchers.Or;
-
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -17,6 +14,8 @@ public class Events {
         getDdayDiscount(day);
         getWeekdayDiscount(order, day);
         getWeekendDiscount(order, day);
+        getSpecialDiscount(day);
+        getGift(order);
     }
 
     private void getDdayDiscount(Day day) {
@@ -47,6 +46,18 @@ public class Events {
     private void addWeekendDiscount(Order order) {
         if (order.hasMainMenu()) {
             elements.put(DiscountContent.WEEKEND, WEEKDAY_DISCOUNT * order.getMainMenuCount());
+        }
+    }
+
+    private void getSpecialDiscount(Day day) {
+        if (Special.isSpecialDay(day.getDay())) {
+            elements.put(DiscountContent.SPECIAL, DEFAULT_D_DAY_PRICE);
+        }
+    }
+
+    private void getGift(Order order) {
+        if (order.isGift()) {
+            elements.put(DiscountContent.GIFT, Menu.CHAMPAGNE.getPrice());
         }
     }
 }
