@@ -57,6 +57,11 @@ public class OutputView {
         System.out.println(OutputMessage.BADGE.getMessage());
         System.out.println(badge.getName());
     }
+
+    public void printNewLine() {
+        System.out.println();
+    }
+
     public void printExceptionMessage(String message) {
         System.out.println(message);
     }
