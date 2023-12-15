@@ -7,9 +7,9 @@ public class InputView {
 
     private final InputValidator validator = new InputValidator();
 
-    public String readDate() {
+    public int readDate() {
         String input = Console.readLine();
         validator.validateNumber(input);
-        return input;
+        return Integer.parseInt(input);
     }
 }

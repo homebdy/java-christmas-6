@@ -11,4 +11,8 @@ public class OutputView {
     public void printDate() {
         System.out.println(OutputMessage.READ_DATE.getMessage());
     }
+
+    public void printExceptionMessage(String message) {
+        System.out.println(message);
+    }
 }
