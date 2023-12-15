@@ -17,7 +17,8 @@ public enum OutputMessage {
     GIFT_MESSAGE("<증정 메뉴>"),
     DISCOUNT_MESSAGE("<혜택 내역>"),
     TOTAL_DISCOUNT("<총혜택 금액>"),
-    MINUS("-");
+    MINUS("-"),
+    AFTER_DISCOUNT("<할인 후 예상 결제 금액>");
 
     private final String message;
 

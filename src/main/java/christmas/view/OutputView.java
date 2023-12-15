@@ -47,6 +47,10 @@ public class OutputView {
         System.out.println(events.getDiscount());
     }
 
+    public void printPriceAfterDiscount(Events events) {
+        System.out.println(OutputMessage.AFTER_DISCOUNT.getMessage());
+        System.out.println(events.getAfterDiscount());
+    }
 
     public void printExceptionMessage(String message) {
         System.out.println(message);

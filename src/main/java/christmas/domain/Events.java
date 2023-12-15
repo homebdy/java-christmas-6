@@ -11,14 +11,16 @@ public class Events {
     private static final int DEFAULT_D_DAY_PRICE = 1000;
     private static final int WEEKDAY_DISCOUNT = 2023;
     private final Map<DiscountContent, Integer> elements;
+    private final Order order;
 
     public Events(Order order, Day day) {
         this.elements = new EnumMap<>(DiscountContent.class);
+        this.order = order;
         getDdayDiscount(day);
-        getWeekdayDiscount(order, day);
-        getWeekendDiscount(order, day);
+        getWeekdayDiscount(day);
+        getWeekendDiscount(day);
         getSpecialDiscount(day);
-        getGift(order);
+        getGift();
     }
 
     private void getDdayDiscount(Day day) {
@@ -28,25 +30,25 @@ public class Events {
         }
     }
 
-    private void getWeekdayDiscount(Order order, Day day) {
+    private void getWeekdayDiscount(Day day) {
         if (Week.isWeekday(day.getDay())) {
-            addWeekdayDiscount(order);
+            addWeekdayDiscount();
         }
     }
 
-    private void addWeekdayDiscount(Order order) {
+    private void addWeekdayDiscount() {
         if (order.hasDessert()) {
             elements.put(DiscountContent.WEEKDAY, WEEKDAY_DISCOUNT * order.getDessertCount());
         }
     }
 
-    private void getWeekendDiscount(Order order, Day day) {
+    private void getWeekendDiscount(Day day) {
         if (Week.isWeekend(day.getDay())) {
-            addWeekendDiscount(order);
+            addWeekendDiscount();
         }
     }
 
-    private void addWeekendDiscount(Order order) {
+    private void addWeekendDiscount() {
         if (order.hasMainMenu()) {
             elements.put(DiscountContent.WEEKEND, WEEKDAY_DISCOUNT * order.getMainMenuCount());
         }
@@ -58,7 +60,7 @@ public class Events {
         }
     }
 
-    private void getGift(Order order) {
+    private void getGift() {
         if (order.isGift()) {
             elements.put(DiscountContent.GIFT, Menu.CHAMPAGNE.getPrice());
         }
@@ -77,6 +79,17 @@ public class Events {
             price += elements.get(content);
         }
         return price;
+    }
+
+    public int getAfterDiscountPrice() {
+        if (hasGift()) {
+            return order.getTotalPrice() - getTotalDiscount() + Menu.CHAMPAGNE.getPrice();
+        }
+        return order.getTotalPrice() - getTotalDiscount();
+    }
+
+    public boolean hasGift() {
+        return elements.containsKey(DiscountContent.GIFT);
     }
 
     public String getGiftMenu() {
@@ -119,4 +132,7 @@ public class Events {
         return sb.toString();
     }
 
+    public String getAfterDiscount() {
+        return String.format(OutputMessage.PRICE.getMessage(), getAfterDiscountPrice());
+    }
 }

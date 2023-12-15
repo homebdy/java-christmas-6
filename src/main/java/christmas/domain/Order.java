@@ -28,7 +28,7 @@ public class Order {
                 });
     }
 
-    private int getTotalPrice() {
+    public int getTotalPrice() {
         int price = 0;
         for (Menu key : elements.keySet()) {
             price += elements.get(key) * key.getPrice();
