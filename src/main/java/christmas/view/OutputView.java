@@ -12,6 +12,10 @@ public class OutputView {
         System.out.println(OutputMessage.READ_DATE.getMessage());
     }
 
+    public void printOrderMessage() {
+        System.out.println(OutputMessage.READ_ORDER.getMessage());
+    }
+
     public void printExceptionMessage(String message) {
         System.out.println(message);
     }
