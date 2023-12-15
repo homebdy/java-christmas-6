@@ -44,6 +44,10 @@ public enum Menu {
         return this.category == Category.DESSERT;
     }
 
+    public boolean isMainMenu() {
+        return this.category == Category.MAIN_MENU;
+    }
+
     public int getPrice() {
         return price;
     }

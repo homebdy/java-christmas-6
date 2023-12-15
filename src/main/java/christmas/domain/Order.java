@@ -2,7 +2,6 @@ package christmas.domain;
 
 import christmas.constant.OutputMessage;
 
-import java.security.Key;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
@@ -49,6 +48,21 @@ public class Order {
     public boolean hasDessert() {
         return elements.keySet().stream()
                 .anyMatch(Menu::isDessert);
+    }
+
+    public int getMainMenuCount() {
+        int count = 0;
+        for (Menu key : elements.keySet()) {
+            if (key.isMainMenu()) {
+                count += elements.get(key);
+            }
+        }
+        return count;
+    }
+
+    public boolean hasMainMenu() {
+        return elements.keySet().stream()
+                .anyMatch(Menu::isMainMenu);
     }
 
     public String getOrderList() {
