@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class Events {
 
+    private static final int DEFAULT_DISCOUNT_PRICE = 0;
     private static final int DEFAULT_D_DAY_PRICE = 1000;
     private static final int WEEKDAY_DISCOUNT = 2023;
     private final Map<DiscountContent, Integer> elements;
@@ -63,6 +64,21 @@ public class Events {
         }
     }
 
+    public int getTotalDiscount() {
+        if (!hasDiscount()) {
+            return DEFAULT_DISCOUNT_PRICE;
+        }
+        return calculateDiscount();
+    }
+
+    private int calculateDiscount() {
+        int price = DEFAULT_DISCOUNT_PRICE;
+        for (DiscountContent content : elements.keySet()) {
+            price += elements.get(content);
+        }
+        return price;
+    }
+
     public String getGiftMenu() {
         StringBuilder sb = new StringBuilder();
         if (elements.containsKey(DiscountContent.GIFT)) {
@@ -93,4 +109,14 @@ public class Events {
                     .append(OutputMessage.NEW_LINE.getMessage());
         }
     }
+
+    public String getDiscount() {
+        StringBuilder sb = new StringBuilder();
+        if (hasDiscount()) {
+            sb.append(OutputMessage.MINUS.getMessage());
+        }
+        sb.append(String.format(OutputMessage.PRICE.getMessage(), getTotalDiscount()));
+        return sb.toString();
+    }
+
 }

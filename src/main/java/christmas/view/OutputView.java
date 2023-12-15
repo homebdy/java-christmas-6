@@ -42,6 +42,11 @@ public class OutputView {
         System.out.println(events.getDiscountHistory());
     }
 
+    public void printTotalDiscountPrice(Events events) {
+        System.out.println(OutputMessage.TOTAL_DISCOUNT.getMessage());
+        System.out.println(events.getDiscount());
+    }
+
 
     public void printExceptionMessage(String message) {
         System.out.println(message);
