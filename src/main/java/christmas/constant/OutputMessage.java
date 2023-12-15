@@ -18,7 +18,8 @@ public enum OutputMessage {
     DISCOUNT_MESSAGE("<혜택 내역>"),
     TOTAL_DISCOUNT("<총혜택 금액>"),
     MINUS("-"),
-    AFTER_DISCOUNT("<할인 후 예상 결제 금액>");
+    AFTER_DISCOUNT("<할인 후 예상 결제 금액>"),
+    BADGE("<12월 이벤트 배지>");
 
     private final String message;
 
@@ -29,4 +30,4 @@ public enum OutputMessage {
     public String getMessage() {
         return message;
     }
-    }
+}

@@ -1,6 +1,7 @@
 package christmas.view;
 
 import christmas.constant.OutputMessage;
+import christmas.domain.Badge;
 import christmas.domain.Events;
 import christmas.domain.Order;
 
@@ -52,6 +53,10 @@ public class OutputView {
         System.out.println(events.getAfterDiscount());
     }
 
+    public void printBadge(Badge badge) {
+        System.out.println(OutputMessage.BADGE.getMessage());
+        System.out.println(badge.getName());
+    }
     public void printExceptionMessage(String message) {
         System.out.println(message);
     }
